@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- node
+cache:
+  yarn: true
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=\${API_TOKEN}" > .npmrc
+install:
+- yarn install
+script:
+- yarn clean && yarn format && yarn lint && yarn test
+before_deploy:
+- yarn build
+deploy:
+  edge: true
+  provider: npm
+  email: youyou89325@163.com
+  api_token: $API_TOKEN
+  cleanup: false
+  on:
+    tags: true
+    all_branches: true
