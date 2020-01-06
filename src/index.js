@@ -1,12 +1,8 @@
-import bannerSaga from './sagas/banner';
-import {fork} from 'redux-saga/effects';
+import bannerSaga from "./sagas/banner";
+import { fork } from "redux-saga/effects";
 
-export {
-    bannerSaga
+export { bannerSaga };
+
+export default function* saga() {
+  yield fork(bannerSaga);
 }
-
-export default function* saga(){
-    const bannerTask = yield fork(bannerSaga);
-}
-
-
