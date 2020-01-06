@@ -1,6 +1,6 @@
 {
   "name": "ycm-cloud-music-saga",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/ycm-cloud-music-saga.cjs.js",
   "module": "dist/ycm-cloud-music-saga.esm.js",
   "browser": "dist/ycm-cloud-music-saga.umd.js",
