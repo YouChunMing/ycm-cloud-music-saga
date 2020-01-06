@@ -15,8 +15,13 @@ export default [
             file: pkg.browser,
             format: 'umd',
             name: 'cloudMusicSaga',
+            globals: {
+                'ycm-cloud-music-redux': 'cloudMusicRedux',
+                'ycm-cloud-music-api': 'cloudMusicApi',
+            },
             exports:'named',
         },
+        external: ['ycm-cloud-music-redux', 'ycm-cloud-music-api'],
         plugins: [
             builtins({
                 crypto: true
@@ -24,7 +29,12 @@ export default [
             resolve({
                 browser: true,
             }),
-            commonjs(),
+            commonjs({
+                // namedExports: {
+                //     'node_modules/ycm-cloud-music-api/dist/ycm-cloud-music-api.umd.js': ['banner'],
+                //     'node_modules/ycm-cloud-music-redux/dist/ycm-cloud-music-redux.umd.js':['banner']
+                // },
+            }),
             globals(),
             babel({
                 exclude: 'node_modules/**' 
@@ -34,6 +44,10 @@ export default [
                 dest: "dist",
                 filename: 'index.html',
                 inject:'head',
+                externals: [
+                    { type: 'js', file: "node_modules/ycm-cloud-music-api/dist/ycm-cloud-music-api.umd.js", pos: 'before' },
+                    { type: 'js', file: "node_modules/ycm-cloud-music-redux/dist/ycm-cloud-music-redux.umd.js", pos: 'before' }
+                ],
                 ignore: /(\.cjs\.js)|(\.esm\.js)$/i
             })
         ]
@@ -44,7 +58,7 @@ export default [
             { file: pkg.main, format: 'cjs', exports:'named'},
             { file: pkg.module, format: 'esm' }
         ],
-        external: [],
+        external: ['redux-saga/effects', 'ycm-cloud-music-redux', 'ycm-cloud-music-api'],
         plugins: [
             commonjs(),
             babel({
