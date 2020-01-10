@@ -1,14 +1,14 @@
 {
   "name": "ycm-cloud-music-saga",
-  "version": "1.0.2",
-  "main": "dist/ycm-cloud-music-saga.cjs.js",
-  "module": "dist/ycm-cloud-music-saga.esm.js",
-  "browser": "dist/ycm-cloud-music-saga.umd.js",
+  "version": "1.1.0",
+  "main": "cjs/ycm-cloud-music-saga.js",
+  "module": "es/ycm-cloud-music-saga.js",
+  "unpkg": "umd/ycm-cloud-music-saga.js",
   "repository": "git@github.com:YouChunMing/ycm-cloud-music-saga.git",
   "author": "YouChunMing <youyou89325@163.com>",
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf dist coverage types",
+    "clean": "rimraf dist cjs es umd coverage types",
     "format": "prettier --write \"{src,test}/**/*.{js,ts}\" index.d.ts \"**/*.md\"",
     "lint": "eslint --no-error-on-unmatched-pattern --ext js,ts src test",
     "test": "jest --passWithNoTests",
@@ -26,17 +26,21 @@
     "rimraf": "^3.0.0",
     "rollup": "^1.27.14",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-bundle-html": "^0.2.2",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-terser": "^5.1.3"
   },
   "dependencies": {
     "core-js": "3",
     "redux-saga": "^1.1.3",
-    "ycm-cloud-music-api": "^1.0.1",
-    "ycm-cloud-music-redux": "^1.0.10"
-  }
+    "ycm-cloud-music-api": "^1.1.1",
+    "ycm-cloud-music-redux": "^1.1.0"
+  },
+  "files": [
+    "umd",
+    "es",
+    "cjs",
+    "src"
+  ]
 }
